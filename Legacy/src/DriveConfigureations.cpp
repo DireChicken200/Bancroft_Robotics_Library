@@ -513,7 +513,13 @@ namespace bancroft
         {
             if(pTemp->theta)
             {
-              turnUntilTemp(static_cast<void*>(pTemp));
+              if(!pTemp->PID)
+              {
+                turnUntilTemp(static_cast<void*>(pTemp));
+              } else if(pTemp->PID)
+              {
+                turnUntilTempPID(static_cast<void*>(pTemp));
+              }
             } else
             {
               if(!pTemp->PID)
@@ -606,6 +612,7 @@ namespace bancroft
     tempPassable->velocityToRun = speed;
     tempPassable->theta = t;
     tempPassable->finished = false;
+    tempPassable->PID = false;
 
     mailbox.push(tempPassable);
   }
@@ -1131,10 +1138,22 @@ namespace bancroft
         {
             if(pTemp->theta)
             {
-              turnUntilTemp(static_cast<void*>(pTemp));
+              if(!pTemp->PID)
+              {
+                turnUntilTemp(static_cast<void*>(pTemp));
+              } else if(pTemp->PID)
+              {
+                turnUntilTempPID(static_cast<void*>(pTemp));
+              }
             } else 
             {
-              driveUntilTemp(static_cast<void*>(pTemp));
+              if(!pTemp->PID)
+              {
+                driveUntilTemp(static_cast<void*>(pTemp));
+              } else if(pTemp->PID)
+              {
+                driveUntilTempPID(static_cast<void*>(pTemp));
+              }
             }
             while(!pTemp->finished)
             {
@@ -1154,6 +1173,19 @@ namespace bancroft
     tempPassable->velocityToRun = speed;
     tempPassable->distanceCM = revolutions;
     tempPassable->finished = false;
+    tempPassable->PID = false;
+
+    mailbox.push(tempPassable);
+  }
+
+  void HDrive::driveUntilPID(float speed, float revolutions)
+  {
+    passable* tempPassable = new passable;
+    tempPassable->thisDrive = this;
+    tempPassable->velocityToRun = speed;
+    tempPassable->distanceCM = revolutions;
+    tempPassable->finished = false;
+    tempPassable->PID = true;
 
     mailbox.push(tempPassable);
   }
@@ -1165,6 +1197,19 @@ namespace bancroft
     tempPassable->velocityToRun = speed;
     tempPassable->theta = t;
     tempPassable->finished = false;
+    tempPassable->PID = false;
+
+    mailbox.push(tempPassable);
+  }
+
+  void HDrive::turnUntilPID(float speed, float t)
+  {
+    passable* tempPassable = new passable;
+    tempPassable->thisDrive = this;
+    tempPassable->velocityToRun = speed;
+    tempPassable->theta = t;
+    tempPassable->finished = false;
+    tempPassable->PID = true;
 
     mailbox.push(tempPassable);
   }
@@ -1187,6 +1232,55 @@ namespace bancroft
       instance->thisDrive->startAllMotors(false);
       vex::this_thread::sleep_for(5);
     }
+    instance->thisDrive->stopAllMotors();
+    instance->thisDrive->LeftDrive->resetRotation();
+    instance->thisDrive->RightDrive->resetRotation();
+    instance->finished = true;
+  }
+
+  void HDrive::driveUntilTempPID(void* arg)
+  {
+    if(arg == NULL)
+      return;
+
+    passable* instance = static_cast<passable*>(arg);
+
+    instance->thisDrive->mailboxEmpty = false;
+
+    float error = 0;
+    float prevError = 0;
+    float setpoint = instance->distanceCM * sin(PI/2.0);
+    float integral = 0;
+    float derivative = 0;
+    float runPower = 0;
+
+    float averageEncoder;
+
+    do {
+      averageEncoder = ((fabs(instance->thisDrive->LeftDrive->rotation(vex::rotationUnits::rev)) + fabs(instance->thisDrive->RightDrive->rotation(vex::rotationUnits::rev))) / 2.0) * (instance->thisDrive->wheelCircumference);
+      error = setpoint - averageEncoder; 
+      integral = integral + error;
+
+      if (error >= 0) //error = 0 or passes setpoint
+      {
+        integral = 0;
+      }
+      if (error*instance->thisDrive->pVal + derivative*instance->thisDrive->pVal) 
+      {
+        integral = 0;
+      }
+
+      derivative = error - prevError;
+      prevError = error;
+      runPower = error*instance->thisDrive->pVal + integral*instance->thisDrive->iVal + derivative*instance->thisDrive->dVal;
+
+      if(runPower > instance->velocityToRun) { runPower = instance->velocityToRun; }
+      if(runPower < -instance->velocityToRun) { runPower = -instance->velocityToRun; }
+
+      instance->thisDrive->driveForwardAt(runPower);
+      instance->thisDrive->startAllMotors(false); 
+      vex::this_thread::sleep_for(5);
+    } while(error > 5 && error < -5);
     instance->thisDrive->stopAllMotors();
     instance->thisDrive->LeftDrive->resetRotation();
     instance->thisDrive->RightDrive->resetRotation();
@@ -1226,6 +1320,55 @@ namespace bancroft
     instance->thisDrive->LeftDrive->resetRotation();
     instance->thisDrive->RightDrive->resetRotation();
     
+    instance->finished = true;
+  }
+
+  void HDrive::turnUntilTempPID(void* arg)
+  {
+    if(arg == NULL)
+      return;
+
+    passable* instance = static_cast<passable*>(arg);
+
+    instance->thisDrive->mailboxEmpty = false;
+
+    float error = 0;
+    float prevError = 0;
+    float setpoint = instance->theta * (instance->thisDrive->wheelToWheel/1.9);
+    float integral = 0;
+    float derivative = 0;
+    float runPower = 0;
+
+    float averageEncoder;
+
+    do {
+      averageEncoder = ((fabs(instance->thisDrive->LeftDrive->rotation(vex::rotationUnits::rev)) + fabs(instance->thisDrive->RightDrive->rotation(vex::rotationUnits::rev))) / 2.0) * (instance->thisDrive->wheelCircumference);
+      error = setpoint - averageEncoder; 
+      integral = integral + error;
+
+      if (error >= 0) //error = 0 or passes setpoint
+      {
+        integral = 0;
+      }
+      if (error*instance->thisDrive->pVal + derivative*instance->thisDrive->pVal) 
+      {
+        integral = 0;
+      }
+
+      derivative = error - prevError;
+      prevError = error;
+      runPower = error*instance->thisDrive->pVal + integral*instance->thisDrive->iVal + derivative*instance->thisDrive->dVal;
+
+      if(runPower > instance->velocityToRun) { runPower = instance->velocityToRun; }
+      if(runPower < -instance->velocityToRun) { runPower = -instance->velocityToRun; }
+
+      instance->thisDrive->turnRightAt(runPower);
+      instance->thisDrive->startAllMotors(false); 
+      vex::this_thread::sleep_for(5);
+    } while(error > 5 && error < -5);
+    instance->thisDrive->stopAllMotors();
+    instance->thisDrive->LeftDrive->resetRotation();
+    instance->thisDrive->RightDrive->resetRotation();
     instance->finished = true;
   }
 }

@@ -147,7 +147,7 @@ Discarded input sections
  .ARM.exidx.text._ZN8bancroft6XDriveC2EPN3vex5motorES3_S3_S3_
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6XDrive11mailboxTaskEPv
-                0x0000000000000000      0x10c build/src/DriveConfigureations.o
+                0x0000000000000000      0x11c build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6XDrive11mailboxTaskEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6XDriveC2EPN3vex11motor_groupES3_S3_S3_
@@ -266,6 +266,10 @@ Discarded input sections
                 0x0000000000000000      0x220 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6XDrive13turnUntilTempEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
+ .text._ZN8bancroft6XDrive16turnUntilTempPIDEPv
+                0x0000000000000000      0x1ec build/src/DriveConfigureations.o
+ .ARM.exidx.text._ZN8bancroft6XDrive16turnUntilTempPIDEPv
+                0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6XDrive14driveUntilTempEPv
                 0x0000000000000000      0x140 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6XDrive14driveUntilTempEPv
@@ -305,10 +309,6 @@ Discarded input sections
  .text._ZN8bancroft6XDrive9turnUntilEff
                 0x0000000000000000       0x58 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6XDrive9turnUntilEff
-                0x0000000000000000        0x8 build/src/DriveConfigureations.o
- .text._ZN8bancroft6XDrive16turnUntilTempPIDEPv
-                0x0000000000000000      0x1ec build/src/DriveConfigureations.o
- .ARM.exidx.text._ZN8bancroft6XDrive16turnUntilTempPIDEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6HDriveC2EPN3vex5motorES3_
                 0x0000000000000000       0xdc build/src/DriveConfigureations.o
@@ -415,7 +415,7 @@ Discarded input sections
  .ARM.exidx.text._ZN8bancroft6HDrive13stopAllMotorsEv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6HDrive11mailboxTaskEPv
-                0x0000000000000000       0xd4 build/src/DriveConfigureations.o
+                0x0000000000000000       0xf8 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6HDrive11mailboxTaskEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft5tFifoIPNS_6HDrive8passableEE3popERS3_
@@ -426,9 +426,17 @@ Discarded input sections
                 0x0000000000000000      0x1f8 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6HDrive13turnUntilTempEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
+ .text._ZN8bancroft6HDrive16turnUntilTempPIDEPv
+                0x0000000000000000      0x1c4 build/src/DriveConfigureations.o
+ .ARM.exidx.text._ZN8bancroft6HDrive16turnUntilTempPIDEPv
+                0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6HDrive14driveUntilTempEPv
                 0x0000000000000000      0x114 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6HDrive14driveUntilTempEPv
+                0x0000000000000000        0x8 build/src/DriveConfigureations.o
+ .text._ZN8bancroft6HDrive17driveUntilTempPIDEPv
+                0x0000000000000000      0x1a0 build/src/DriveConfigureations.o
+ .ARM.exidx.text._ZN8bancroft6HDrive17driveUntilTempPIDEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6HDrive10driveUntilEff
                 0x0000000000000000       0x58 build/src/DriveConfigureations.o
@@ -438,9 +446,17 @@ Discarded input sections
                 0x0000000000000000       0x60 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft5tFifoIPNS_6HDrive8passableEE4pushERS3_
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
+ .text._ZN8bancroft6HDrive13driveUntilPIDEff
+                0x0000000000000000       0x58 build/src/DriveConfigureations.o
+ .ARM.exidx.text._ZN8bancroft6HDrive13driveUntilPIDEff
+                0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6HDrive9turnUntilEff
                 0x0000000000000000       0x58 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6HDrive9turnUntilEff
+                0x0000000000000000        0x8 build/src/DriveConfigureations.o
+ .text._ZN8bancroft6HDrive12turnUntilPIDEff
+                0x0000000000000000       0x58 build/src/DriveConfigureations.o
+ .ARM.exidx.text._ZN8bancroft6HDrive12turnUntilPIDEff
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZNSt11_Deque_baseIPN8bancroft6Module8passableESaIS3_EE17_M_initialize_mapEj
                 0x0000000000000000       0xac build/src/DriveConfigureations.o

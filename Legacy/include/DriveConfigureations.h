@@ -118,7 +118,6 @@ namespace bancroft
       float currentSpeedRF;
       float currentSpeedRB;
       // Drive Specs
-      vex::distanceUnits units;
       float externalGearing;
       float wheelRadius;
       float wheelCircumference;
@@ -214,6 +213,7 @@ namespace bancroft
         float distanceCM;
         float theta;
         bool finished;
+        bool PID;
       };
       // Max RPM
       float MAX_RPM = 200;
@@ -229,8 +229,6 @@ namespace bancroft
       float currentSpeedLD;
       float currentSpeedRD;
       // Drive Specs
-      vex::distanceUnits units;
-      //float motorGearing;
       float externalGearing;
       float wheelRadius;
       float wheelCircumference;
@@ -242,8 +240,10 @@ namespace bancroft
       static void mailboxTask(void* mail);
 
       static void driveUntilTemp(void* arg);
+      static void driveUntilTempPID(void* arg);
 
       static void turnUntilTemp(void* arg);
+      static void turnUntilTempPID(void* arg);
 
       float pVal;
       float iVal;
