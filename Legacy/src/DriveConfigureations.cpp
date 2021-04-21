@@ -668,11 +668,7 @@ namespace bancroft
       error = setpoint - averageEncoder; 
       integral = integral + error;
 
-      if (error >= 0) //error = 0 or passes setpoint
-      {
-        integral = 0;
-      }
-      if (error*instance->thisDrive->pVal + derivative*instance->thisDrive->pVal) 
+      if (error > setpoint/5.0 || integral > setpoint/10.0) 
       {
         integral = 0;
       }
@@ -747,11 +743,7 @@ namespace bancroft
       error = setpoint - averageEncoder; 
       integral = integral + error;
 
-      if (error >= 0) //error = 0 or passes setpoint
-      {
-        integral = 0;
-      }
-      if (error*instance->thisDrive->pVal + derivative*instance->thisDrive->pVal) 
+      if (error > setpoint/5.0 || integral > setpoint/10.0)
       {
         integral = 0;
       }
@@ -837,11 +829,7 @@ namespace bancroft
       error = setpoint - averageEncoder; 
       integral = integral + error;
 
-      if (error >= 0) //error = 0 or passes setpoint
-      {
-        integral = 0;
-      }
-      if (error*instance->thisDrive->pVal + derivative*instance->thisDrive->pVal) 
+      if (error > setpoint/5.0 || integral > setpoint/10.0) 
       {
         integral = 0;
       }
@@ -1261,11 +1249,7 @@ namespace bancroft
       error = setpoint - averageEncoder; 
       integral = integral + error;
 
-      if (error >= 0) //error = 0 or passes setpoint
-      {
-        integral = 0;
-      }
-      if (error*instance->thisDrive->pVal + derivative*instance->thisDrive->pVal) 
+      if (error > setpoint/5.0 || integral > setpoint/10.0) 
       {
         integral = 0;
       }
@@ -1346,11 +1330,7 @@ namespace bancroft
       error = setpoint - averageEncoder; 
       integral = integral + error;
 
-      if (error >= 0) //error = 0 or passes setpoint
-      {
-        integral = 0;
-      }
-      if (error*instance->thisDrive->pVal + derivative*instance->thisDrive->pVal) 
+      if (error > setpoint/5.0 || integral > setpoint/10.0) 
       {
         integral = 0;
       }
