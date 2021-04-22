@@ -668,7 +668,8 @@ namespace bancroft
       error = setpoint - averageEncoder; 
       integral = integral + error;
 
-      if (error > setpoint/5.0 || integral > setpoint/10.0) 
+
+      if (error > setpoint/5.0 || integral > setpoint/10.0 || error < 0) 
       {
         integral = 0;
       }
@@ -743,7 +744,7 @@ namespace bancroft
       error = setpoint - averageEncoder; 
       integral = integral + error;
 
-      if (error > setpoint/5.0 || integral > setpoint/10.0)
+      if (error > setpoint/5.0 || integral > setpoint/10.0 || error < 0)
       {
         integral = 0;
       }
@@ -829,7 +830,7 @@ namespace bancroft
       error = setpoint - averageEncoder; 
       integral = integral + error;
 
-      if (error > setpoint/5.0 || integral > setpoint/10.0) 
+      if (error > setpoint/5.0 || integral > setpoint/10.0 || error < 0) 
       {
         integral = 0;
       }
@@ -1249,7 +1250,7 @@ namespace bancroft
       error = setpoint - averageEncoder; 
       integral = integral + error;
 
-      if (error > setpoint/5.0 || integral > setpoint/10.0) 
+      if (error > setpoint/5.0 || integral > setpoint/10.0 || error < 0) 
       {
         integral = 0;
       }
@@ -1330,7 +1331,7 @@ namespace bancroft
       error = setpoint - averageEncoder; 
       integral = integral + error;
 
-      if (error > setpoint/5.0 || integral > setpoint/10.0) 
+      if (error > setpoint/5.0 || integral > setpoint/10.0 || error < 0) 
       {
         integral = 0;
       }
