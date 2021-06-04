@@ -99,7 +99,7 @@ Discarded input sections
  .ARM.exidx.text._ZN8bancroft6Module13stopAllMotorsEv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6Module12runUntilTempEPv
-                0x0000000000000000       0xd4 build/src/DriveConfigureations.o
+                0x0000000000000000       0xe0 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6Module12runUntilTempEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6Module8runUntilEff
@@ -263,27 +263,27 @@ Discarded input sections
  .ARM.exidx.text._ZN8bancroft5tFifoIPNS_6XDrive8passableEE3popERS3_
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6XDrive13turnUntilTempEPv
-                0x0000000000000000      0x220 build/src/DriveConfigureations.o
+                0x0000000000000000      0x250 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6XDrive13turnUntilTempEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6XDrive16turnUntilTempPIDEPv
-                0x0000000000000000      0x1ec build/src/DriveConfigureations.o
+                0x0000000000000000      0x23c build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6XDrive16turnUntilTempPIDEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6XDrive14driveUntilTempEPv
-                0x0000000000000000      0x140 build/src/DriveConfigureations.o
+                0x0000000000000000      0x170 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6XDrive14driveUntilTempEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6XDrive15strafeUntilTempEPv
-                0x0000000000000000      0x140 build/src/DriveConfigureations.o
+                0x0000000000000000      0x170 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6XDrive15strafeUntilTempEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6XDrive17driveUntilTempPIDEPv
-                0x0000000000000000      0x1e4 build/src/DriveConfigureations.o
+                0x0000000000000000      0x234 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6XDrive17driveUntilTempPIDEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6XDrive18strafeUntilTempPIDEPv
-                0x0000000000000000      0x1e4 build/src/DriveConfigureations.o
+                0x0000000000000000      0x234 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6XDrive18strafeUntilTempPIDEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6XDrive10driveUntilEff
@@ -423,19 +423,19 @@ Discarded input sections
  .ARM.exidx.text._ZN8bancroft5tFifoIPNS_6HDrive8passableEE3popERS3_
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6HDrive13turnUntilTempEPv
-                0x0000000000000000      0x1f8 build/src/DriveConfigureations.o
+                0x0000000000000000      0x210 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6HDrive13turnUntilTempEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6HDrive16turnUntilTempPIDEPv
-                0x0000000000000000      0x1c4 build/src/DriveConfigureations.o
+                0x0000000000000000      0x20c build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6HDrive16turnUntilTempPIDEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6HDrive14driveUntilTempEPv
-                0x0000000000000000      0x114 build/src/DriveConfigureations.o
+                0x0000000000000000      0x128 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6HDrive14driveUntilTempEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6HDrive17driveUntilTempPIDEPv
-                0x0000000000000000      0x1a0 build/src/DriveConfigureations.o
+                0x0000000000000000      0x1e8 build/src/DriveConfigureations.o
  .ARM.exidx.text._ZN8bancroft6HDrive17driveUntilTempPIDEPv
                 0x0000000000000000        0x8 build/src/DriveConfigureations.o
  .text._ZN8bancroft6HDrive10driveUntilEff

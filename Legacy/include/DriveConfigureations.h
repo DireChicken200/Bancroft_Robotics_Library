@@ -50,13 +50,15 @@ namespace bancroft
       // Maximum RPM motors can run at
       float MAX_RPM = 200;
       bool mailboxEmpty;
+      void setContinue(bool can) { mailboxEmpty = can; }
       // Motors
       vex::motor_group* Motors;
       tFifo<passable*> mailbox;
       std::string name;
 
       static void mailboxTask(void* mail);
-      static void runUntilTemp(void* arg);
+      static void runUntilTemp(void* arg); 
+
 
     public:
       /* -Default Constructor- */
@@ -67,8 +69,6 @@ namespace bancroft
       Module(vex::motor_group* m_g, std::string name);
 
       bool canContinue();
-      void setContinue(bool can) { mailboxEmpty = can; } 
-
       /* -Setters- */
       void setGearset(vex::gearSetting gear);
       /* -Getters- */
